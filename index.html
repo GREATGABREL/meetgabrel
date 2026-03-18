@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>meet gabrel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              bgdark: "#0a0a0a",
+              card: "#D9DEE1",
+              cardTrans: "rgba(217, 222, 225, 0.08)",
+              textMain: "#D9DEE1",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        background: #000;
+        background: radial-gradient(circle at 20% 30%, #111 0%, #000 70%);
+      }
+      .glass {
+        background: var(--tw-bg-opacity, rgba(217, 222, 225, 0.07));
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(217, 222, 225, 0.12);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+      }
+      .glass-hover:hover {
+        background: rgba(217, 222, 225, 0.12);
+        transform: translateY(-4px) scale(1.015);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+      }
+      .input-focus:focus {
+        border-color: rgba(217, 222, 225, 0.4);
+        box-shadow: 0 0 0 3px rgba(217, 222, 225, 0.12);
+      }
+      @media (max-width: 640px) {
+        .glass {
+          padding: 1.5rem;
+        }
+      }
+      /* Target the message form container specifically */
+      #form,
+      #form * {
+        scrollbar-width: thin; /* Firefox: thin scrollbar */
+        scrollbar-color: rgba(217, 222, 225, 0.25) rgba(217, 222, 225, 0.05); /* thumb / track — #D9DEE1 at low opacity */
+      }
+
+      /* WebKit browsers (Chrome, Edge, Safari) */
+      #form::-webkit-scrollbar {
+        width: 6px; /* Very slim — modern & unobtrusive */
+        height: 6px; /* for horizontal if any */
+      }
+
+      #form::-webkit-scrollbar-track {
+        background: rgba(
+          217,
+          222,
+          225,
+          0.04
+        ); /* almost invisible dark glass track */
+        border-radius: 10px;
+        backdrop-filter: blur(4px); /* subtle frosted feel */
+        -webkit-backdrop-filter: blur(4px);
+      }
+
+      #form::-webkit-scrollbar-thumb {
+        background: rgba(217, 222, 225, 0.25); /* light #D9DEE1-ish thumb */
+        border-radius: 10px;
+        border: 2px solid rgba(217, 222, 225, 0.04); /* tiny "glass edge" effect */
+        transition: background 0.2s ease;
+      }
+
+      #form::-webkit-scrollbar-thumb:hover {
+        background: rgba(
+          217,
+          222,
+          225,
+          0.45
+        ); /* brighter on hover for interaction hint */
+      }
+
+      /* Optional: make it even more glass-like with a tiny inner shadow/glow */
+      #form::-webkit-scrollbar-thumb {
+        box-shadow:
+          inset 0 1px 2px rgba(0, 0, 0, 0.4),
+          0 0 4px rgba(217, 222, 225, 0.15);
+      }
+    </style>
+  </head>
+  <body
+    class="min-h-screen flex items-center justify-center p-4 md:p-8 text-textMain font-sans antialiased"
+  >
+    <!-- PROFILE CARD -->
+    <div
+      id="profile"
+      class="glass rounded-3xl w-full max-w-md p-8 md:p-10 transition-all duration-500"
+    >
+      <div class="flex flex-col items-center text-center">
+        <div class="relative mb-7">
+          <div
+            class="absolute inset-0 rounded-full bg-gradient-to-br from-gray-700/20 to-transparent blur-xl opacity-70"
+          ></div>
+          <img
+            src="gabrel.jpg"
+            alt="profile"
+            class="relative w-28 h-28 md:w-32 md:h-32 rounded-full object-cover border border-card/20 shadow-inner"
+          />
+        </div>
+
+        <h1 class="text-3xl md:text-4xl font-bold tracking-tight mb-3">
+          GABREL
+        </h1>
+
+        <div class="flex flex-wrap justify-center gap-3 mb-6">
+          <span
+            class="px-4 py-1.5 bg-card/5 backdrop-blur-sm border border-card/10 rounded-full text-sm"
+            >Writer</span
+          >
+          <span
+            class="px-4 py-1.5 bg-card/5 backdrop-blur-sm border border-card/10 rounded-full text-sm"
+            >Partly FE dev</span
+          >
+        </div>
+
+        <p class="text-base leading-relaxed opacity-90 mb-10">
+          always trying to be unique
+        </p>
+
+        <div class="flex items-center justify-center gap-5 md:gap-6">
+          <button
+            onclick="showForm()"
+            class="glass-hover px-8 py-3.5 font-semibold rounded-2xl transition-all duration-300 active:scale-95"
+          >
+            Message
+          </button>
+
+          <a
+            href="https://t.me/GREATGABREL"
+            target="_blank"
+            aria-label="Telegram"
+            class="transition-transform hover:scale-110"
+          >
+            <i class="bi bi-telegram text-[#D9DEE1] w-9 h-9"></i>
+          </a>
+
+          <a
+            href="https://x.com/GREATGABREL"
+            target="_blank"
+            aria-label="X"
+            class="transition-transform hover:scale-110"
+          >
+            <i class="bi bi-twitter-x text-[#D9DEE1] w-9 h-9"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- MESSAGE FORM -->
+    <div
+      id="form"
+      class="hidden glass rounded-3xl w-full max-w-md p-8 md:p-10 transition-all duration-500"
+    >
+      <div class="flex flex-col">
+        <h2 class="text-3xl font-bold mb-8 text-center">Send Message</h2>
+
+        <form
+          action="https://formspree.io/f/mvzwvjrq"
+          method="POST"
+          class="space-y-6"
+          onsubmit="handleSubmit(event)"
+        >
+          <div>
+            <label class="block text-sm font-medium mb-2">Name</label>
+            <input
+              type="text"
+              name="name"
+              required
+              placeholder="Your Name"
+              class="w-full px-5 py-3 bg-black/30 border border-card/20 rounded-xl input-focus transition-all duration-200 outline-none placeholder:text-card/50"
+            />
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium mb-2">Email</label>
+            <input
+              type="email"
+              name="email"
+              required
+              placeholder="your@email.com"
+              class="w-full px-5 py-3 bg-black/30 border border-card/20 rounded-xl input-focus transition-all duration-200 outline-none placeholder:text-card/50"
+            />
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium mb-2">Message</label>
+            <textarea
+              name="message"
+              rows="5"
+              required
+              placeholder="Hey GABREL..."
+              class="w-full px-5 py-3 bg-black/30 border border-card/20 rounded-xl input-focus transition-all duration-200 outline-none resize-none placeholder:text-card/50"
+            ></textarea>
+          </div>
+
+          <button
+            type="submit"
+            class="glass-hover w-full py-4 font-semibold rounded-2xl transition-all duration-300 active:scale-95"
+          >
+            Send
+          </button>
+        </form>
+
+        <div class="mt-8 flex justify-center gap-6 opacity-80">
+          <a
+            href="https://GREATGABREL"
+            target="_blank"
+            aria-label="Telegram"
+            class="glass-hover p-3 rounded-2xl transition-all duration-300 hover:scale-110"
+          >
+            <i class="bi bi-telegram text-[#D9DEE1] w-9 h-9"></i>
+          </a>
+
+          <a
+            href="https://x.com/GREATGABREL"
+            target="_blank"
+            aria-label="X"
+            class="glass-hover p-3 rounded-2xl transition-all duration-300 hover:scale-110"
+          >
+            <i class="bi bi-twitter-x text-[#D9DEE1] w-9 h-9"></i>
+          </a>
+        </div>
+
+        <button
+          onclick="showProfile()"
+          class="mt-6 text-sm opacity-70 hover:opacity-100 underline mx-auto transition"
+        >
+          Back
+        </button>
+      </div>
+    </div>
+
+    <!-- Success overlay -->
+    <div
+      id="success"
+      class="fixed inset-0 bg-black/80 hidden flex items-center justify-center z-50"
+    >
+      <div class="glass p-10 rounded-3xl text-center max-w-sm mx-6 shadow-2xl">
+        <h3 class="text-2xl font-bold mb-4">Sent</h3>
+        <p class="text-lg mb-8 opacity-90">Message delivered successfully.</p>
+        <button
+          onclick="
+            document.getElementById('success').classList.add('hidden');
+            showProfile();
+          "
+          class="glass-hover px-10 py-4 rounded-2xl transition-all duration-300"
+        >
+          Back to Profile
+        </button>
+      </div>
+    </div>
+
+    <script>
+      function showForm() {
+        document.getElementById("profile").classList.add("hidden");
+        document.getElementById("form").classList.remove("hidden");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      function showProfile() {
+        document.getElementById("form").classList.add("hidden");
+        document.getElementById("profile").classList.remove("hidden");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      async function handleSubmit(e) {
+        e.preventDefault();
+        const form = e.target;
+
+        try {
+          const response = await fetch(form.action, {
+            method: "POST",
+            body: new FormData(form),
+            headers: { Accept: "application/json" },
+          });
+
+          if (response.ok) {
+            form.reset();
+            document.getElementById("success").classList.remove("hidden");
+          } else {
+            alert("Something went wrong — please try again.");
+          }
+        } catch {
+          alert("Connection issue. Check your network.");
+        }
+      }
+    </script>
+  </body>
+</html>
